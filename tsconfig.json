@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "esnext",
+    "outDir": "dist",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true
+  },
+  "lib": [
+    "es2017",
+    "esnext.asynciterable"
+  ],
+  "include": [
+    "src/**/*"
+  ]
+}

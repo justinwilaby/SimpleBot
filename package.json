@@ -1,0 +1,36 @@
+{
+  "name": "simplebot",
+  "version": "1.0.0",
+  "description": "Simple Bot using the BotBuilder SDK ",
+  "main": "app.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "npm run build && LUIS_MODEL_URL=https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/2a0ff557-8da9-47d1-96b5-190c7abdca02?subscription-key=bf40feb95dca4b7bb3308e6577740586&staging=true&timezoneOffset=-480&q= node dist/app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/justinwilaby/SimpleBot.git"
+  },
+  "keywords": [
+    "BotBuilder",
+    "example"
+  ],
+  "author": "Justin Wilaby",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/justinwilaby/SimpleBot/issues"
+  },
+  "homepage": "https://github.com/justinwilaby/SimpleBot#readme",
+  "dependencies": {
+    "botbuilder": "^3.13.1",
+    "bunyan": "^1.8.12",
+    "restify": "^6.3.4"
+  },
+  "devDependencies": {
+    "@types/node": "^8.5.7",
+    "core-js": "^2.5.3",
+    "tslint": "^5.8.0",
+    "typescript": "^2.6.2"
+  }
+}
