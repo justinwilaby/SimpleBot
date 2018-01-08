@@ -12,6 +12,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const botbuilder_1 = require("botbuilder");
 const meta_1 = require("../meta");
 const loggerService_1 = require("../services/loggerService");
+const ChoiceEnum_1 = require("../enums/ChoiceEnum");
 let SimpleBot = class SimpleBot extends botbuilder_1.UniversalBot {
     constructor() {
         super();
@@ -25,8 +26,35 @@ let SimpleBot = class SimpleBot extends botbuilder_1.UniversalBot {
     greetingDialog(session) {
         session.send('Hello here! How can I help you?');
     }
+    farewellDialog(session) {
+        session.endDialog('Cya Later!');
+    }
     jobsDialog(session) {
-        session.send('Ok sure, I have the following job opportunities available');
+        session.send('Ok sure, I have the following job opportunities available: "Software Design Engineer 3"');
+        setTimeout(() => {
+            botbuilder_1.Prompts.choice(session, 'Would you like me to try to match you with the skill requirements?', [ChoiceEnum_1.ChoiceEnum.YES, ChoiceEnum_1.ChoiceEnum.NO]);
+        }, 1000);
+    }
+    applyChoiceResult(session, result) {
+        const { response } = result;
+        if (response.entity === '' + ChoiceEnum_1.ChoiceEnum.YES) {
+            botbuilder_1.Prompts.text(session, 'Great! Please list your skills so I can determine if you are a match');
+        }
+        else {
+            session.endDialog('Thank you for stopping by, Goodbye');
+        }
+    }
+    skillsList(session, result) {
+        const { response } = result;
+        if (/(typescript|javascript|node)/i.test(response)) {
+            session.send('Impressive skill set! Please build a simple bot and post it to GitHub as a coding exercise.');
+        }
+        else {
+            session.send(`Although you're not a match for this position, keep looking!`);
+        }
+        setTimeout(() => {
+            session.endDialog('Good Luck!');
+        }, 3000);
     }
     receiverIntercept(events, done) {
         super.receive(events, done);
@@ -46,11 +74,29 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], SimpleBot.prototype, "greetingDialog", null);
 __decorate([
+    meta_1.WaterfallStep({ id: 'Goodbye', matches: 'Goodbye' }),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [botbuilder_1.Session]),
+    __metadata("design:returntype", void 0)
+], SimpleBot.prototype, "farewellDialog", null);
+__decorate([
     meta_1.WaterfallStep({ id: 'JobAvailability', matches: 'JobAvailability' }),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [botbuilder_1.Session]),
     __metadata("design:returntype", void 0)
 ], SimpleBot.prototype, "jobsDialog", null);
+__decorate([
+    meta_1.WaterfallStep({ id: 'JobAvailability', stepIndex: 1 }),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [botbuilder_1.Session, Object]),
+    __metadata("design:returntype", void 0)
+], SimpleBot.prototype, "applyChoiceResult", null);
+__decorate([
+    meta_1.WaterfallStep({ id: 'JobAvailability', stepIndex: 2 }),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [botbuilder_1.Session, Object]),
+    __metadata("design:returntype", void 0)
+], SimpleBot.prototype, "skillsList", null);
 __decorate([
     meta_1.Receiver(),
     __metadata("design:type", Function),

@@ -1,4 +1,4 @@
-# SimpleBot coding exercise for Microsoft
+# SimpleBot LUIS connected coding exercise for Microsoft
 This bot helps you to find an open engineering role in Microsoft's FUSE Labs! Run the bot locally, say "Hello" if you'd like then ask the bot things like:
 1. `show me which jobs are available.`
 2. `do you have and new job opportunities?`
