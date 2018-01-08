@@ -22,7 +22,7 @@ export class SimpleBot extends UniversalBot {
 
     @WaterfallStep({id: 'Greeting', matches: 'Greeting'})
     private greetingDialog(session: Session): void {
-        session.send('Hello here! How can I help you?');
+        session.send('Hello there! How can I help you?');
     }
 
     @WaterfallStep({id: 'Goodbye', matches: 'Goodbye'})

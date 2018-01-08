@@ -24,7 +24,7 @@ let SimpleBot = class SimpleBot extends botbuilder_1.UniversalBot {
         session.send(`I'm sorry, I don't understand what you mean when you say "${session.message.text}".`);
     }
     greetingDialog(session) {
-        session.send('Hello here! How can I help you?');
+        session.send('Hello there! How can I help you?');
     }
     farewellDialog(session) {
         session.endDialog('Cya Later!');
