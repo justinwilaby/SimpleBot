@@ -7,9 +7,10 @@ This bot helps you to find an open engineering role in Microsoft's FUSE Labs! Ru
 
 ##Running the Bot
 ### Prerequisites: 
-1. Download and install the [Bot Framewrok Emulator](https://github.com/Microsoft/BotFramework-Emulator) according to the documentation.
-2. open a terminal window and CD into the project root 
-3. run  ``` npm install ```
+1. Node v8.6+
+2. Download and install the [Bot Framework Emulator](https://github.com/Microsoft/BotFramework-Emulator) according to the documentation.
+3. open a terminal window and CD into the project root 
+4. run  ``` npm install ```
 ###Building and running locally
 1. open a terminal window and CD into the project root 
 2. run ```npm run start```
